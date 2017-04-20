@@ -1,0 +1,27 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [PSA].[FK_PSA_Connections_SourceConnectionId_PSA_Extractions] (Foreign Key)
+       [PSA].[FK_PSA_Connections_TargetConnectionId_PSA_Extractions] (Foreign Key)
+       [Staging].[FK_Staging_Connections_SourceConnectionId_Staging_Extractions] (Foreign Key)
+       [Staging].[FK_Staging_Connections_TargetConnectionId_Staging_Extractions] (Foreign Key)
+     Create
+       [PSA].[UniqueColumns] (Table)
+       [Staging].[UniqueColumns] (Table)
+       [PSA].[FK_PSA_UniqueColumns_PSA_Extractions] (Foreign Key)
+       [PSA].[FK_PSA_Extractions_PSA_Connections_SourceConnectionId] (Foreign Key)
+       [PSA].[FK_PSA_Extractions_PSA_Connections_TargetConnectionId] (Foreign Key)
+       [Staging].[FK_Staging_UniqueColumns_Staging_Extractions] (Foreign Key)
+       [Staging].[FK_Staging_Extractions_Staging_Connections_SourceConnectionId] (Foreign Key)
+       [Staging].[FK_Staging_Extractions_Staging_Connections_TargetConnectionId] (Foreign Key)
+
+** Supporting actions

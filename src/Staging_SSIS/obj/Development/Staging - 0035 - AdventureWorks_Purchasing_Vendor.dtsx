@@ -1,0 +1,607 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{9270E620-64AF-4CEE-A1B8-323CD12CCCDA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0035 - AdventureWorks_Purchasing_Vendor"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{55AFFDA7-97A6-465F-8B40-723CCAE1BFF3}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{23012788-AE22-460B-A3A7-1C6F79EE1722}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8A8EE8C1-4E09-4AD5-B649-A5A84DB890AA}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{AB09AEF3-3EF2-44CC-9109-B72B4657025A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - Vendor to AdventureWorks_Purchasing_Vendor"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Inputs[Source - Vendor_Output_Add ExtractDate]"
+                  name="Source - Vendor_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Inputs[Source - Vendor_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Inputs[Source - Vendor_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - Vendor"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [Purchasing].[Vendor]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[AccountNumber]"
+                      length="15"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[CreditRating]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[CreditRating]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[CreditRating]"
+                      name="CreditRating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[PreferredVendorStatus]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[PreferredVendorStatus]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[PreferredVendorStatus]"
+                      name="PreferredVendorStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[ActiveFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[ActiveFlag]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[ActiveFlag]"
+                      name="ActiveFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[PurchasingWebServiceURL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[PurchasingWebServiceURL]"
+                      length="1024"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[PurchasingWebServiceURL]"
+                      name="PurchasingWebServiceURL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[CreditRating]"
+                      dataType="ui1"
+                      name="CreditRating" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[PreferredVendorStatus]"
+                      dataType="bool"
+                      name="PreferredVendorStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[ActiveFlag]"
+                      dataType="bool"
+                      name="ActiveFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[PurchasingWebServiceURL]"
+                      dataType="wstr"
+                      length="1024"
+                      name="PurchasingWebServiceURL" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[AccountNumber]"
+                      name="AccountNumber" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[CreditRating]"
+                      dataType="ui1"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[CreditRating]"
+                      name="CreditRating" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[PreferredVendorStatus]"
+                      dataType="bool"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[PreferredVendorStatus]"
+                      name="PreferredVendorStatus" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ActiveFlag]"
+                      dataType="bool"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ActiveFlag]"
+                      name="ActiveFlag" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[PurchasingWebServiceURL]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[PurchasingWebServiceURL]"
+                      name="PurchasingWebServiceURL" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_Purchasing_Vendor"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_Purchasing_Vendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[AccountNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="AccountNumber"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[AccountNumber]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[AccountNumber]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[Name]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[CreditRating]"
+                      cachedDataType="ui1"
+                      cachedName="CreditRating"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[CreditRating]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[CreditRating]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[PreferredVendorStatus]"
+                      cachedDataType="bool"
+                      cachedName="PreferredVendorStatus"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[PreferredVendorStatus]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[PreferredVendorStatus]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[ActiveFlag]"
+                      cachedDataType="bool"
+                      cachedName="ActiveFlag"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[ActiveFlag]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[ActiveFlag]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[PurchasingWebServiceURL]"
+                      cachedDataType="wstr"
+                      cachedLength="1024"
+                      cachedName="PurchasingWebServiceURL"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[PurchasingWebServiceURL]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[PurchasingWebServiceURL]" />
+                    <inputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[CreditRating]"
+                      dataType="ui1"
+                      name="CreditRating" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[PreferredVendorStatus]"
+                      dataType="bool"
+                      name="PreferredVendorStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[ActiveFlag]"
+                      dataType="bool"
+                      name="ActiveFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[PurchasingWebServiceURL]"
+                      dataType="wstr"
+                      length="1024"
+                      name="PurchasingWebServiceURL" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor.Paths[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor]"
+              endId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Target - AdventureWorks_Purchasing_Vendor.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_Purchasing_Vendor"
+              startId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor.Paths[Source - Vendor_Output_Add ExtractDate]"
+              endId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Add ExtractDate.Inputs[Source - Vendor_Output_Add ExtractDate]"
+              name="Source - Vendor_Output_Add ExtractDate"
+              startId="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor\Source - Vendor.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_Purchasing_Vendor"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{04FABAAF-C314-41D8-A3C9-A950CE3A8100}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_Purchasing_Vendor"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8A8EE8C1-4E09-4AD5-B649-A5A84DB890AA}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_Purchasing_Vendor]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_Purchasing_Vendor_To_Extract - Vendor to AdventureWorks_Purchasing_Vendor]"
+      DTS:CreationName=""
+      DTS:DTSID="{79C900CB-DE1B-4A61-9268-5A9D885AAD80}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_Purchasing_Vendor"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_Purchasing_Vendor_To_Extract - Vendor to AdventureWorks_Purchasing_Vendor"
+      DTS:To="Package\Extract - Vendor to AdventureWorks_Purchasing_Vendor" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

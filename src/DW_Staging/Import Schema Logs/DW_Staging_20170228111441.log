@@ -1,0 +1,77 @@
+28/02/2017 11:14:41	This log contains information about the import schema operation into project 'DW_Staging' on computer 'LWLT009' by user 'bjarvis'.
+28/02/2017 11:14:41	Import of database schema has started.
+28/02/2017 11:14:47	Gathering database options
+28/02/2017 11:14:47	Gathering users
+28/02/2017 11:14:47	Gathering roles
+28/02/2017 11:14:47	Gathering application roles
+28/02/2017 11:14:47	Gathering role memberships
+28/02/2017 11:14:47	Gathering filegroups
+28/02/2017 11:14:47	Gathering full-text catalogs
+28/02/2017 11:14:47	Gathering assemblies
+28/02/2017 11:14:47	Gathering certificates
+28/02/2017 11:14:47	Gathering asymmetric keys
+28/02/2017 11:14:47	Gathering symmetric keys
+28/02/2017 11:14:47	Gathering encrypted symmetric keys
+28/02/2017 11:14:47	Gathering schemas
+28/02/2017 11:14:47	Gathering XML schema collections
+28/02/2017 11:14:47	Gathering user-defined data types
+28/02/2017 11:14:47	Gathering user-defined types
+28/02/2017 11:14:47	Gathering table types
+28/02/2017 11:14:47	Gathering unique keys for table types
+28/02/2017 11:14:47	Gathering primary keys for table types
+28/02/2017 11:14:47	Gathering indexes for table types
+28/02/2017 11:14:47	Gathering check constraints for table types
+28/02/2017 11:14:47	Gathering default constraints for table types
+28/02/2017 11:14:47	Gathering partition functions
+28/02/2017 11:14:47	Gathering partition schemes
+28/02/2017 11:14:47	Gathering functions
+28/02/2017 11:14:47	Gathering encrypted functions
+28/02/2017 11:14:47	Gathering aggregates
+28/02/2017 11:14:47	Gathering procedures
+28/02/2017 11:14:47	Gathering encrypted procedures
+28/02/2017 11:14:47	Gathering tables
+28/02/2017 11:14:47	Gathering primary keys
+28/02/2017 11:14:47	Gathering unique constraints
+28/02/2017 11:14:47	Gathering foreign keys
+28/02/2017 11:14:47	Gathering default constraints
+28/02/2017 11:14:47	Gathering check constraints
+28/02/2017 11:14:47	Gathering views
+28/02/2017 11:14:47	Gathering encrypted views
+28/02/2017 11:14:47	Gathering indexes
+28/02/2017 11:14:47	Gathering statistics
+28/02/2017 11:14:47	Gathering full-text index stoplists
+28/02/2017 11:14:47	Gathering search property lists
+28/02/2017 11:14:47	Gathering search properties
+28/02/2017 11:14:47	Gathering full-text indexes
+28/02/2017 11:14:47	Gathering column store indexes
+28/02/2017 11:14:47	Gathering spatial indexes
+28/02/2017 11:14:47	Gathering XML indexes
+28/02/2017 11:14:47	Gathering Selective XML indexes
+28/02/2017 11:14:47	Gathering encrypted triggers
+28/02/2017 11:14:47	Gathering triggers
+28/02/2017 11:14:47	Gathering encrypted and clr ddl triggers
+28/02/2017 11:14:47	Gathering ddl triggers
+28/02/2017 11:14:47	Gathering synonyms
+28/02/2017 11:14:47	Gathering defaults
+28/02/2017 11:14:47	Gathering data constraint uddt bindings
+28/02/2017 11:14:47	Gathering rules
+28/02/2017 11:14:47	Gathering data constraint uddt bindings
+28/02/2017 11:14:47	Gathering message types
+28/02/2017 11:14:47	Gathering queues
+28/02/2017 11:14:47	Gathering contracts
+28/02/2017 11:14:47	Gathering services
+28/02/2017 11:14:47	Gathering event notifications
+28/02/2017 11:14:47	Gathering remote service bindings
+28/02/2017 11:14:47	Gathering broker priorities
+28/02/2017 11:14:47	Gathering signatures
+28/02/2017 11:14:47	Gathering data compression options
+28/02/2017 11:14:47	Gathering sequence types
+28/02/2017 11:14:47	Gathering extended properties
+28/02/2017 11:14:47	Gathering credentials
+28/02/2017 11:14:47	Gathering logins
+28/02/2017 11:14:47	Gathering server audits
+28/02/2017 11:14:47	Scanning project for duplicate elements
+28/02/2017 11:14:47	Finished duplicate element processing
+28/02/2017 11:14:47	Finished importing database.
+28/02/2017 11:14:47	A summary of the import was saved to the following location: \\lowell2.local\shares\profiles\bjarvis\my documents\visual studio 2015\Projects\DW\DW_Staging\Import Schema Logs\DW_Staging_20170228111441.log
+28/02/2017 11:14:47	Click Finish to continue...

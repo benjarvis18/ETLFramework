@@ -1,0 +1,17 @@
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ template language="C#" tier="1" #>
+<#
+    string _connectionString = @"Data Source=.\;Persist Security Info=true;Integrated Security=SSPI;Initial Catalog=DW_MetaData";
+    DataTable _dataTable = new DataTable();
+    SqlDataAdapter _dataAdapter = new SqlDataAdapter("EXEC PSA.GetConnections", _connectionString);
+    _dataAdapter.Fill(_dataTable);
+#>
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Connections>
+        <#
+        foreach ( DataRow _row in _dataTable.Rows ) { #>
+            <Connection Name="<#= _row["ConnectionName"] #>" ConnectionString="Provider=SQLNCLI11;<#= _row["ConnectionString"] #>"></Connection>        
+        <# } #>
+    </Connections>
+</Biml>

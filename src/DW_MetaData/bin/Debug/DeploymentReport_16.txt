@@ -1,0 +1,18 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [PSA].[UQ_PSA_Extractions_SourceConnectionId_SourceSchema_SourceTableName] (Unique Constraint)
+       [PSA].[UQ_PSA_UniqueColumns_ExtractionId_ColumnName] (Unique Constraint)
+       [Staging].[UQ_Staging_Extractions_SourceConnectionId_SourceSchema_SourceTableName] (Unique Constraint)
+       [Staging].[UQ_Staging_UniqueColumns_ExtractionId_ColumnName] (Unique Constraint)
+
+** Supporting actions

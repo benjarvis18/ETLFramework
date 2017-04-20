@@ -1,0 +1,841 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{DCE70381-17A6-4B94-A468-3617D8BE46C5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0052 - AdventureWorks_HumanResources_Employee"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{F06A1197-C896-47C3-B119-7DE0CD929FAF}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D226751F-954C-4F20-85A8-18551485DE7C}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5048C09D-47E5-404C-82BB-C9C739C4F2ED}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{00228959-78F7-4402-B71C-4659D2CE983F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - Employee to AdventureWorks_HumanResources_Employee"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Inputs[Source - Employee_Output_Add ExtractDate]"
+                  name="Source - Employee_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Inputs[Source - Employee_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Inputs[Source - Employee_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - Employee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [HumanResources].[Employee]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[NationalIDNumber]"
+                      length="15"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[LoginID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[LoginID]"
+                      length="256"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[LoginID]"
+                      name="LoginID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[OrganizationNode]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[OrganizationNode]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[OrganizationNode]"
+                      name="OrganizationNode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[OrganizationLevel]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[JobTitle]"
+                      length="50"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[JobTitle]"
+                      name="JobTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[MaritalStatus]"
+                      length="1"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[HireDate]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[SalariedFlag]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[SalariedFlag]"
+                      name="SalariedFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[VacationHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[VacationHours]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[VacationHours]"
+                      name="VacationHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[SickLeaveHours]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[CurrentFlag]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[OrganizationNode]"
+                      dataType="nText"
+                      name="OrganizationNode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[OrganizationLevel]"
+                      dataType="i2"
+                      name="OrganizationLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[NationalIDNumber]"
+                      name="NationalIDNumber" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[LoginID]"
+                      name="LoginID" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[OrganizationNode]"
+                      dataType="nText"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[OrganizationNode]"
+                      name="OrganizationNode" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[OrganizationLevel]"
+                      name="OrganizationLevel" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[JobTitle]"
+                      name="JobTitle" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[SalariedFlag]"
+                      dataType="bool"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[SalariedFlag]"
+                      name="SalariedFlag" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[VacationHours]"
+                      dataType="i2"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[VacationHours]"
+                      name="VacationHours" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[SickLeaveHours]"
+                      name="SickLeaveHours" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[CurrentFlag]"
+                      dataType="bool"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[CurrentFlag]"
+                      name="CurrentFlag" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_HumanResources_Employee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_HumanResources_Employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[BusinessEntityID]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[NationalIDNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NationalIDNumber"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[NationalIDNumber]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[NationalIDNumber]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[LoginID]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="LoginID"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[LoginID]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[LoginID]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[OrganizationNode]"
+                      cachedDataType="nText"
+                      cachedName="OrganizationNode"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[OrganizationNode]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[OrganizationNode]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[OrganizationLevel]"
+                      cachedDataType="i2"
+                      cachedName="OrganizationLevel"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[OrganizationLevel]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[OrganizationLevel]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[JobTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobTitle"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[JobTitle]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[JobTitle]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[BirthDate]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[Gender]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[HireDate]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[SalariedFlag]"
+                      cachedDataType="bool"
+                      cachedName="SalariedFlag"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[SalariedFlag]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[SalariedFlag]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[VacationHours]"
+                      cachedDataType="i2"
+                      cachedName="VacationHours"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[VacationHours]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[VacationHours]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[SickLeaveHours]"
+                      cachedDataType="i2"
+                      cachedName="SickLeaveHours"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[SickLeaveHours]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[SickLeaveHours]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[CurrentFlag]"
+                      cachedDataType="bool"
+                      cachedName="CurrentFlag"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[CurrentFlag]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[CurrentFlag]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[rowguid]"
+                      cachedDataType="guid"
+                      cachedName="rowguid"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[rowguid]" />
+                    <inputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[OrganizationNode]"
+                      dataType="nText"
+                      name="OrganizationNode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[OrganizationLevel]"
+                      dataType="i2"
+                      name="OrganizationLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee.Paths[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee]"
+              endId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Target - AdventureWorks_HumanResources_Employee.Inputs[Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_HumanResources_Employee"
+              startId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee.Paths[Source - Employee_Output_Add ExtractDate]"
+              endId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Add ExtractDate.Inputs[Source - Employee_Output_Add ExtractDate]"
+              name="Source - Employee_Output_Add ExtractDate"
+              startId="Package\Extract - Employee to AdventureWorks_HumanResources_Employee\Source - Employee.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_HumanResources_Employee"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{84EC66C8-3BC3-431D-BA5C-6704792B9723}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_HumanResources_Employee"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5048C09D-47E5-404C-82BB-C9C739C4F2ED}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_HumanResources_Employee]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_HumanResources_Employee_To_Extract - Employee to AdventureWorks_HumanResources_Employee]"
+      DTS:CreationName=""
+      DTS:DTSID="{4A23E3DA-87DF-43FF-BA8F-B952F089FDB5}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_HumanResources_Employee"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_HumanResources_Employee_To_Extract - Employee to AdventureWorks_HumanResources_Employee"
+      DTS:To="Package\Extract - Employee to AdventureWorks_HumanResources_Employee" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 4:28:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{5DB2DD61-A947-4549-B919-9F724414548B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0000 - Populate Staging Area"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{C2903D2D-3396-4D19-9E43-1692A4792685}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package - Staging - 0072 - AdventureWorks_Sales_SalesOrderHeader"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{F3CFA06D-570C-41BE-822F-77B48C6E32F4}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package - Staging - 0072 - AdventureWorks_Sales_SalesOrderHeader"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Staging - 0072 - AdventureWorks_Sales_SalesOrderHeader.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package - Staging - 0073 - AdventureWorks_Sales_SalesOrderDetail"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{5B83020E-6972-47F6-B80A-1C04867D908F}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package - Staging - 0073 - AdventureWorks_Sales_SalesOrderDetail"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Staging - 0073 - AdventureWorks_Sales_SalesOrderDetail.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

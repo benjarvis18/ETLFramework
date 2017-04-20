@@ -1,0 +1,48 @@
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ template language="C#" tier="2" #>
+
+<#
+    string _connectionString = @"Data Source=.\;Persist Security Info=true;Integrated Security=SSPI;Initial Catalog=DW_MetaData";
+    DataTable _dataTable = new DataTable();
+    SqlDataAdapter _dataAdapter = new SqlDataAdapter("EXEC PSA.GetExtractions", _connectionString);
+    _dataAdapter.Fill(_dataTable);
+#>
+
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Packages>
+        <# foreach (DataRow _extraction in _dataTable.Rows) { #>
+            <Package Name="PSA - <#= Convert.ToInt32(_extraction["ExtractionId"]).ToString("0000") #> - <#= _extraction["TargetTableName"] #>" ConstraintMode="Linear">
+                <Tasks>
+                    <ExecuteSQL Name="SQL - Truncate loading-<#= _extraction["TargetTableName"] #>" ConnectionName="<#= _extraction["TargetConnectionName"] #>">
+                        <DirectInput>
+                            TRUNCATE TABLE [loading].[<#= _extraction["TargetTableName"] #>]
+                        </DirectInput>
+                    </ExecuteSQL>
+                    <Dataflow Name="DFT - <#= _extraction["SourceTableName"] #> to <#= _extraction["TargetTableName"] #>">
+                        <Transformations>
+                            <OleDbSource Name="Source - <#= _extraction["SourceTableName"] #>" ConnectionName="<#= _extraction["SourceConnectionName"] #>">
+                                <DirectInput>
+                                    <# if(_extraction["SourceSqlQuery"] != System.DBNull.Value) { #>
+                                        <#= _extraction["SourceSqlQuery"] #>
+                                    <# }
+                                    else { #>
+                                        SELECT * FROM [<#= _extraction["SourceSchema"] #>].[<#= _extraction["SourceTableName"] #>]
+                                    <# } #>
+                                </DirectInput>
+                            </OleDbSource>
+                            <OleDbDestination Name="Target - <#= _extraction["TargetTableName"] #>" ConnectionName="<#= _extraction["TargetConnectionName"] #>">
+                                <ExternalTableOutput Table="[loading].[<#= _extraction["TargetTableName"] #>]"></ExternalTableOutput>
+                            </OleDbDestination>
+                        </Transformations>
+                    </Dataflow>
+                    <ExecuteSQL Name="SQL - Populate PSA Table" ConnectionName="<#= _extraction["TargetConnectionName"] #>">
+                        <DirectInput>
+                            EXEC [psa].[Load_<#= _extraction["TargetTableName"] #>]
+                        </DirectInput>
+                    </ExecuteSQL>
+                </Tasks>
+            </Package>
+        <# } #>
+    </Packages>
+</Biml>

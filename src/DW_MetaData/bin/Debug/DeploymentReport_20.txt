@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [Audit] (Schema)
+       [Error] (Schema)
+       [Audit].[LoadType] (Table)
+       [Audit].[LoadStatus] (Table)
+       [Audit].[Load] (Table)
+       [Audit].[FK_Audit_Load_Audit_LoadType] (Foreign Key)
+       [Audit].[FK_Audit_Load_Audit_LoadStatus] (Foreign Key)
+       [Audit].[CK_Audit_Load_EndDateTime_GreaterThanOrEqualTo_StartDateTime] (Check Constraint)
+
+** Supporting actions

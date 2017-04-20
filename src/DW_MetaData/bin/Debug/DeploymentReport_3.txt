@@ -1,0 +1,25 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [Staging].[Extractions]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [Staging].[Extractions] (Table)
+     Create
+       [Staging].[CK_Staging_Extractions_TableOrQuerySpecified] (Check Constraint)
+
+** Supporting actions
+     Drop
+       [Staging].[FK_Staging_Connections_SourceConnectionId_Staging_Extractions] (Foreign Key)
+       [Staging].[FK_Staging_Connections_TargetConnectionId_Staging_Extractions] (Foreign Key)
+     Create
+       [Staging].[FK_Staging_Connections_SourceConnectionId_Staging_Extractions] (Foreign Key)
+       [Staging].[FK_Staging_Connections_TargetConnectionId_Staging_Extractions] (Foreign Key)
+     Refresh
+       [Staging].[GetExtractions] (Procedure)

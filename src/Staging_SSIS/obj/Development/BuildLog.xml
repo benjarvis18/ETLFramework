@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>Staging_SSIS</Name>
+    <LastWriteTime>2017-03-01T16:28:19.1766398Z</LastWriteTime>
+    <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>Staging - 0000 - Populate Staging Area.dtsx</Name>
+      <LastWriteTime>2017-03-01T16:28:06.4098744Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Staging - 0072 - AdventureWorks_Sales_SalesOrderHeader.dtsx</Name>
+      <LastWriteTime>2017-03-01T16:28:06.4118744Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Staging - 0073 - AdventureWorks_Sales_SalesOrderDetail.dtsx</Name>
+      <LastWriteTime>2017-03-01T16:28:06.4138744Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

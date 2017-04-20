@@ -1,0 +1,640 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{606FA67E-AC3F-46E4-8F63-F850D3521BB0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0014 - AdventureWorks_Person_Address"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{D87146B5-60C2-4B80-A303-1BC5D93EF7DE}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9A434E8D-460B-4060-9AC9-178682C80758}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{93EFED0D-EAD4-4C56-8203-2F2E4D731A59}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - Address to AdventureWorks_Person_Address"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{F273D420-B45C-48B5-AD13-EE2547589D31}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - Address to AdventureWorks_Person_Address"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Inputs[Source - Address_Output_Add ExtractDate]"
+                  name="Source - Address_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Inputs[Source - Address_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Inputs[Source - Address_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - Address"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [Person].[Address]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[AddressID]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressID]"
+                      name="AddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressLine1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[AddressLine1]"
+                      length="60"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressLine1]"
+                      name="AddressLine1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressLine2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[AddressLine2]"
+                      length="60"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressLine2]"
+                      name="AddressLine2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[City]"
+                      length="30"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[StateProvinceID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[StateProvinceID]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[StateProvinceID]"
+                      name="StateProvinceID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[PostalCode]"
+                      length="15"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[SpatialLocation]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[SpatialLocation]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[SpatialLocation]"
+                      name="SpatialLocation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[AddressID]"
+                      dataType="i4"
+                      name="AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[AddressLine1]"
+                      dataType="wstr"
+                      length="60"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[AddressLine2]"
+                      dataType="wstr"
+                      length="60"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="30"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[StateProvinceID]"
+                      dataType="i4"
+                      name="StateProvinceID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[SpatialLocation]"
+                      dataType="nText"
+                      name="SpatialLocation" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[AddressID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[AddressID]"
+                      name="AddressID" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[AddressLine1]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[AddressLine1]"
+                      name="AddressLine1" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[AddressLine2]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[AddressLine2]"
+                      name="AddressLine2" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[City]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[StateProvinceID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[StateProvinceID]"
+                      name="StateProvinceID" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[SpatialLocation]"
+                      dataType="nText"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[SpatialLocation]"
+                      name="SpatialLocation" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_Person_Address"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_Person_Address]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_Person_Address">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[AddressID]"
+                      cachedDataType="i4"
+                      cachedName="AddressID"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[AddressID]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressID]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[AddressLine1]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="AddressLine1"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[AddressLine1]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressLine1]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[AddressLine2]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="AddressLine2"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[AddressLine2]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[AddressLine2]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[City]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[StateProvinceID]"
+                      cachedDataType="i4"
+                      cachedName="StateProvinceID"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[StateProvinceID]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[StateProvinceID]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[PostalCode]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[SpatialLocation]"
+                      cachedDataType="nText"
+                      cachedName="SpatialLocation"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[SpatialLocation]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[SpatialLocation]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[rowguid]"
+                      cachedDataType="guid"
+                      cachedName="rowguid"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[rowguid]" />
+                    <inputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[AddressID]"
+                      dataType="i4"
+                      name="AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[AddressLine1]"
+                      dataType="wstr"
+                      length="60"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[AddressLine2]"
+                      dataType="wstr"
+                      length="60"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="30"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[StateProvinceID]"
+                      dataType="i4"
+                      name="StateProvinceID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="15"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[SpatialLocation]"
+                      dataType="nText"
+                      name="SpatialLocation" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - Address to AdventureWorks_Person_Address.Paths[Add ExtractDate_Output_Target - AdventureWorks_Person_Address]"
+              endId="Package\Extract - Address to AdventureWorks_Person_Address\Target - AdventureWorks_Person_Address.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Person_Address]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_Person_Address"
+              startId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - Address to AdventureWorks_Person_Address.Paths[Source - Address_Output_Add ExtractDate]"
+              endId="Package\Extract - Address to AdventureWorks_Person_Address\Add ExtractDate.Inputs[Source - Address_Output_Add ExtractDate]"
+              name="Source - Address_Output_Add ExtractDate"
+              startId="Package\Extract - Address to AdventureWorks_Person_Address\Source - Address.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_Person_Address"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{48C8BF28-0102-4B3E-B359-F4874214C618}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_Person_Address"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{93EFED0D-EAD4-4C56-8203-2F2E4D731A59}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_Person_Address]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_Person_Address_To_Extract - Address to AdventureWorks_Person_Address]"
+      DTS:CreationName=""
+      DTS:DTSID="{7C38FEA4-6724-40BE-AC9F-78D59E8875D1}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_Person_Address"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_Person_Address_To_Extract - Address to AdventureWorks_Person_Address"
+      DTS:To="Package\Extract - Address to AdventureWorks_Person_Address" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{F26BC6F0-377C-45A4-916C-FF318131BAF0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0009 - AdventureWorks_dbo_DatabaseLog"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{6A95E5E9-9C10-4759-8FF4-EC7EAC91A663}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3873137A-C4D9-4B20-90D9-A8E47AA7EF9D}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{000CE11E-8E92-4BCC-9824-D34D087756F5}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{672BD2E6-86CA-4A3E-B194-C7F9A19E37ED}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Inputs[Source - DatabaseLog_Output_Add ExtractDate]"
+                  name="Source - DatabaseLog_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Inputs[Source - DatabaseLog_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Inputs[Source - DatabaseLog_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - DatabaseLog"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [dbo].[DatabaseLog]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[DatabaseLogID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[DatabaseLogID]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[DatabaseLogID]"
+                      name="DatabaseLogID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[PostTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[PostTime]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[PostTime]"
+                      name="PostTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[DatabaseUser]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[DatabaseUser]"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[DatabaseUser]"
+                      name="DatabaseUser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Event]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[Event]"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Event]"
+                      name="Event"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Schema]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[Schema]"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Schema]"
+                      name="Schema"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Object]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[Object]"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Object]"
+                      name="Object"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[TSQL]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[TSQL]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[TSQL]"
+                      name="TSQL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[XmlEvent]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[XmlEvent]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[XmlEvent]"
+                      name="XmlEvent"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[DatabaseLogID]"
+                      dataType="i4"
+                      name="DatabaseLogID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[PostTime]"
+                      dataType="dbTimeStamp"
+                      name="PostTime" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[DatabaseUser]"
+                      dataType="wstr"
+                      length="128"
+                      name="DatabaseUser" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[Event]"
+                      dataType="wstr"
+                      length="128"
+                      name="Event" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[Schema]"
+                      dataType="wstr"
+                      length="128"
+                      name="Schema" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[Object]"
+                      dataType="wstr"
+                      length="128"
+                      name="Object" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[TSQL]"
+                      dataType="nText"
+                      name="TSQL" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].ExternalColumns[XmlEvent]"
+                      dataType="nText"
+                      name="XmlEvent" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[DatabaseLogID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[DatabaseLogID]"
+                      name="DatabaseLogID" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[PostTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[PostTime]"
+                      name="PostTime" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[DatabaseUser]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[DatabaseUser]"
+                      name="DatabaseUser" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[Event]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[Event]"
+                      name="Event" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[Schema]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[Schema]"
+                      name="Schema" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[Object]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[Object]"
+                      name="Object" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[TSQL]"
+                      dataType="nText"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[TSQL]"
+                      name="TSQL" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[XmlEvent]"
+                      dataType="nText"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[XmlEvent]"
+                      name="XmlEvent" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_dbo_DatabaseLog"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_dbo_DatabaseLog]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[DatabaseLogID]"
+                      cachedDataType="i4"
+                      cachedName="DatabaseLogID"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[DatabaseLogID]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[DatabaseLogID]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[PostTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PostTime"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[PostTime]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[PostTime]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[DatabaseUser]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="DatabaseUser"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[DatabaseUser]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[DatabaseUser]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[Event]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="Event"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[Event]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Event]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[Schema]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="Schema"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[Schema]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Schema]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[Object]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="Object"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[Object]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[Object]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[TSQL]"
+                      cachedDataType="nText"
+                      cachedName="TSQL"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[TSQL]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[TSQL]" />
+                    <inputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].Columns[XmlEvent]"
+                      cachedDataType="nText"
+                      cachedName="XmlEvent"
+                      externalMetadataColumnId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[XmlEvent]"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output].Columns[XmlEvent]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[DatabaseLogID]"
+                      dataType="i4"
+                      name="DatabaseLogID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[PostTime]"
+                      dataType="dbTimeStamp"
+                      name="PostTime" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[DatabaseUser]"
+                      dataType="wstr"
+                      length="128"
+                      name="DatabaseUser" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[Event]"
+                      dataType="wstr"
+                      length="128"
+                      name="Event" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[Schema]"
+                      dataType="wstr"
+                      length="128"
+                      name="Schema" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[Object]"
+                      dataType="wstr"
+                      length="128"
+                      name="Object" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[TSQL]"
+                      dataType="nText"
+                      name="TSQL" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[XmlEvent]"
+                      dataType="nText"
+                      name="XmlEvent" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog.Paths[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog]"
+              endId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Target - AdventureWorks_dbo_DatabaseLog.Inputs[Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_dbo_DatabaseLog"
+              startId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog.Paths[Source - DatabaseLog_Output_Add ExtractDate]"
+              endId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Add ExtractDate.Inputs[Source - DatabaseLog_Output_Add ExtractDate]"
+              name="Source - DatabaseLog_Output_Add ExtractDate"
+              startId="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog\Source - DatabaseLog.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_dbo_DatabaseLog"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{E3165A92-B481-45A1-AED4-ECED7CC70DC9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_dbo_DatabaseLog"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{000CE11E-8E92-4BCC-9824-D34D087756F5}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_dbo_DatabaseLog]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_dbo_DatabaseLog_To_Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog]"
+      DTS:CreationName=""
+      DTS:DTSID="{F0626A67-5A11-4082-8D47-87A364DBE5F6}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_dbo_DatabaseLog"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_dbo_DatabaseLog_To_Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog"
+      DTS:To="Package\Extract - DatabaseLog to AdventureWorks_dbo_DatabaseLog" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

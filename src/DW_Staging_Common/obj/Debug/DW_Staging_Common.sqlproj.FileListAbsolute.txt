@@ -1,0 +1,5 @@
+\\lowell2.local\shares\profiles\bjarvis\my documents\visual studio 2015\Projects\DW\DW_Staging_Common\bin\Debug\DW_Staging_Common.dacpac
+\\lowell2.local\shares\profiles\bjarvis\my documents\visual studio 2015\Projects\DW\DW_Staging_Common\bin\Debug\DW_Staging_Common.dll
+\\lowell2.local\shares\profiles\bjarvis\my documents\visual studio 2015\Projects\DW\DW_Staging_Common\bin\Debug\DW_Staging_Common.pdb
+\\lowell2.local\shares\profiles\bjarvis\my documents\visual studio 2015\Projects\DW\DW_Staging_Common\obj\Debug\DW_Staging_Common.dll
+\\lowell2.local\shares\profiles\bjarvis\my documents\visual studio 2015\Projects\DW\DW_Staging_Common\obj\Debug\DW_Staging_Common.pdb

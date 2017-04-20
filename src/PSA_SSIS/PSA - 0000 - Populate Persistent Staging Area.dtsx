@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DTS:Executable DTS:CreationDate="03/03/2017 14:25:51" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="LWLT009" DTS:CreatorName="bjarvis" DTS:DTSID="{E5BED411-5D29-4E84-A50C-2EF268AF1668}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="" DTS:LocaleID="2057" DTS:ObjectName="PSA - 0000 - Populate Persistent Staging Area" DTS:ProtectionLevel="0" DTS:refId="Package" DTS:VersionBuild="0" DTS:VersionGUID="{1845EBAE-A158-4284-8095-71551DDE75BB}" DTS:VersionMajor="0" xmlns:DTS="www.microsoft.com/SqlServer/Dts">
+  <DTS:Property DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Executables>
+    <DTS:Executable DTS:CreationName="Microsoft.ExecutePackageTask" DTS:DTSID="{9493B7BC-2666-4BFF-B7B2-CCC3F5AA6E4A}" DTS:ExecutableType="Microsoft.ExecutePackageTask" DTS:LocaleID="-1" DTS:ObjectName="EPT - PSA - 0001 - AdventureWorks_Sales_SalesOrderHeader" DTS:refId="Package\EPT - PSA - 0001 - AdventureWorks_Sales_SalesOrderHeader" DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <PackageName>PSA - 0001 - AdventureWorks_Sales_SalesOrderHeader.dtsx</PackageName>
+          <UseProjectReference>True</UseProjectReference>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable DTS:CreationName="Microsoft.ExecutePackageTask" DTS:DTSID="{50B42E00-4ECB-4FAA-B543-FF6644A696C0}" DTS:ExecutableType="Microsoft.ExecutePackageTask" DTS:LocaleID="-1" DTS:ObjectName="EPT - PSA - 0002 - AdventureWorks_Sales_SalesOrderDetail" DTS:refId="Package\EPT - PSA - 0002 - AdventureWorks_Sales_SalesOrderDetail" DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <PackageName>PSA - 0002 - AdventureWorks_Sales_SalesOrderDetail.dtsx</PackageName>
+          <UseProjectReference>True</UseProjectReference>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

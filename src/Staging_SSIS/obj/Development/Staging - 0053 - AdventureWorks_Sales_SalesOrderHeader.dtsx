@@ -1,0 +1,1126 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{575107AA-FDD4-4044-9BDE-65C580C9C07C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0053 - AdventureWorks_Sales_SalesOrderHeader"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{87ADE91A-F90E-499C-BBD4-EF5FF59D09E9}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{83DE3483-25A7-48F0-AF3C-4FC25B9B3981}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1BE21F04-AAE2-4088-91D0-22FD89AA7FD0}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{51BAD2BD-2BCA-4C8D-9F7C-D41250D9DDBE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Inputs[Source - SalesOrderHeader_Output_Add ExtractDate]"
+                  name="Source - SalesOrderHeader_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Inputs[Source - SalesOrderHeader_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Inputs[Source - SalesOrderHeader_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - SalesOrderHeader"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [Sales].[SalesOrderHeader]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[RevisionNumber]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[RevisionNumber]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[RevisionNumber]"
+                      name="RevisionNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[DueDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[DueDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[DueDate]"
+                      name="DueDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ShipDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipDate]"
+                      name="ShipDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Status]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[Status]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[OnlineOrderFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[OnlineOrderFlag]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[OnlineOrderFlag]"
+                      name="OnlineOrderFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesOrderNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SalesOrderNumber]"
+                      length="25"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[PurchaseOrderNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[PurchaseOrderNumber]"
+                      length="25"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[PurchaseOrderNumber]"
+                      name="PurchaseOrderNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[AccountNumber]"
+                      length="15"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesPersonID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SalesPersonID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesPersonID]"
+                      name="SalesPersonID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TerritoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[TerritoryID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TerritoryID]"
+                      name="TerritoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[BillToAddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[BillToAddressID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[BillToAddressID]"
+                      name="BillToAddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipToAddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ShipToAddressID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipToAddressID]"
+                      name="ShipToAddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipMethodID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ShipMethodID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipMethodID]"
+                      name="ShipMethodID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CreditCardID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CreditCardID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CreditCardID]"
+                      name="CreditCardID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CreditCardApprovalCode]"
+                      length="15"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CreditCardApprovalCode]"
+                      name="CreditCardApprovalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CurrencyRateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CurrencyRateID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CurrencyRateID]"
+                      name="CurrencyRateID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SubTotal]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SubTotal]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SubTotal]"
+                      name="SubTotal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TaxAmt]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[TaxAmt]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TaxAmt]"
+                      name="TaxAmt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Freight]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[Freight]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Freight]"
+                      name="Freight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TotalDue]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[TotalDue]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TotalDue]"
+                      name="TotalDue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Comment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[Comment]"
+                      length="128"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Comment]"
+                      name="Comment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[RevisionNumber]"
+                      dataType="ui1"
+                      name="RevisionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[DueDate]"
+                      dataType="dbTimeStamp"
+                      name="DueDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      name="ShipDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[Status]"
+                      dataType="ui1"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[OnlineOrderFlag]"
+                      dataType="bool"
+                      name="OnlineOrderFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SalesOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="SalesOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[PurchaseOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="PurchaseOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SalesPersonID]"
+                      dataType="i4"
+                      name="SalesPersonID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[TerritoryID]"
+                      dataType="i4"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[BillToAddressID]"
+                      dataType="i4"
+                      name="BillToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ShipToAddressID]"
+                      dataType="i4"
+                      name="ShipToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ShipMethodID]"
+                      dataType="i4"
+                      name="ShipMethodID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CreditCardID]"
+                      dataType="i4"
+                      name="CreditCardID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CreditCardApprovalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[CurrencyRateID]"
+                      dataType="i4"
+                      name="CurrencyRateID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[SubTotal]"
+                      dataType="cy"
+                      name="SubTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[TaxAmt]"
+                      dataType="cy"
+                      name="TaxAmt" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[Comment]"
+                      dataType="wstr"
+                      length="128"
+                      name="Comment" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SalesOrderID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SalesOrderID]"
+                      name="SalesOrderID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[RevisionNumber]"
+                      dataType="ui1"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[RevisionNumber]"
+                      name="RevisionNumber" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[DueDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[DueDate]"
+                      name="DueDate" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ShipDate]"
+                      name="ShipDate" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[Status]"
+                      dataType="ui1"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[OnlineOrderFlag]"
+                      dataType="bool"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[OnlineOrderFlag]"
+                      name="OnlineOrderFlag" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SalesOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[PurchaseOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[PurchaseOrderNumber]"
+                      name="PurchaseOrderNumber" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[AccountNumber]"
+                      name="AccountNumber" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SalesPersonID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SalesPersonID]"
+                      name="SalesPersonID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[TerritoryID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[TerritoryID]"
+                      name="TerritoryID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[BillToAddressID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[BillToAddressID]"
+                      name="BillToAddressID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ShipToAddressID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ShipToAddressID]"
+                      name="ShipToAddressID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ShipMethodID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ShipMethodID]"
+                      name="ShipMethodID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CreditCardID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CreditCardID]"
+                      name="CreditCardID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CreditCardApprovalCode]"
+                      name="CreditCardApprovalCode" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CurrencyRateID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[CurrencyRateID]"
+                      name="CurrencyRateID" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SubTotal]"
+                      dataType="cy"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[SubTotal]"
+                      name="SubTotal" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[TaxAmt]"
+                      dataType="cy"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[TaxAmt]"
+                      name="TaxAmt" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[Freight]"
+                      dataType="cy"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[Freight]"
+                      name="Freight" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[TotalDue]"
+                      dataType="cy"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[TotalDue]"
+                      name="TotalDue" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[Comment]"
+                      dataType="wstr"
+                      length="128"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[Comment]"
+                      name="Comment" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_Sales_SalesOrderHeader"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_Sales_SalesOrderHeader]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[SalesOrderID]"
+                      cachedDataType="i4"
+                      cachedName="SalesOrderID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesOrderID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[RevisionNumber]"
+                      cachedDataType="ui1"
+                      cachedName="RevisionNumber"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[RevisionNumber]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[RevisionNumber]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[OrderDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[DueDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DueDate"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[DueDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[DueDate]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[ShipDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ShipDate"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ShipDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipDate]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[Status]"
+                      cachedDataType="ui1"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[Status]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[OnlineOrderFlag]"
+                      cachedDataType="bool"
+                      cachedName="OnlineOrderFlag"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[OnlineOrderFlag]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[OnlineOrderFlag]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[SalesOrderNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="SalesOrderNumber"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SalesOrderNumber]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesOrderNumber]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[PurchaseOrderNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="PurchaseOrderNumber"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[PurchaseOrderNumber]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[PurchaseOrderNumber]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[AccountNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="AccountNumber"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[AccountNumber]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[AccountNumber]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CustomerID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[SalesPersonID]"
+                      cachedDataType="i4"
+                      cachedName="SalesPersonID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SalesPersonID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SalesPersonID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[TerritoryID]"
+                      cachedDataType="i4"
+                      cachedName="TerritoryID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[TerritoryID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TerritoryID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[BillToAddressID]"
+                      cachedDataType="i4"
+                      cachedName="BillToAddressID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[BillToAddressID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[BillToAddressID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[ShipToAddressID]"
+                      cachedDataType="i4"
+                      cachedName="ShipToAddressID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ShipToAddressID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipToAddressID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[ShipMethodID]"
+                      cachedDataType="i4"
+                      cachedName="ShipMethodID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ShipMethodID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ShipMethodID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[CreditCardID]"
+                      cachedDataType="i4"
+                      cachedName="CreditCardID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CreditCardID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CreditCardID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[CreditCardApprovalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="CreditCardApprovalCode"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CreditCardApprovalCode]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CreditCardApprovalCode]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[CurrencyRateID]"
+                      cachedDataType="i4"
+                      cachedName="CurrencyRateID"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CurrencyRateID]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[CurrencyRateID]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[SubTotal]"
+                      cachedDataType="cy"
+                      cachedName="SubTotal"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SubTotal]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[SubTotal]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[TaxAmt]"
+                      cachedDataType="cy"
+                      cachedName="TaxAmt"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[TaxAmt]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TaxAmt]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[Freight]"
+                      cachedDataType="cy"
+                      cachedName="Freight"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[Freight]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Freight]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[TotalDue]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[TotalDue]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[Comment]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="Comment"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[Comment]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[Comment]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[rowguid]"
+                      cachedDataType="guid"
+                      cachedName="rowguid"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[rowguid]" />
+                    <inputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[RevisionNumber]"
+                      dataType="ui1"
+                      name="RevisionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[DueDate]"
+                      dataType="dbTimeStamp"
+                      name="DueDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      name="ShipDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[Status]"
+                      dataType="ui1"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[OnlineOrderFlag]"
+                      dataType="bool"
+                      name="OnlineOrderFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SalesOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="SalesOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[PurchaseOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="PurchaseOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SalesPersonID]"
+                      dataType="i4"
+                      name="SalesPersonID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[TerritoryID]"
+                      dataType="i4"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[BillToAddressID]"
+                      dataType="i4"
+                      name="BillToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ShipToAddressID]"
+                      dataType="i4"
+                      name="ShipToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ShipMethodID]"
+                      dataType="i4"
+                      name="ShipMethodID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CreditCardID]"
+                      dataType="i4"
+                      name="CreditCardID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CreditCardApprovalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[CurrencyRateID]"
+                      dataType="i4"
+                      name="CurrencyRateID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[SubTotal]"
+                      dataType="cy"
+                      name="SubTotal" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[TaxAmt]"
+                      dataType="cy"
+                      name="TaxAmt" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[Comment]"
+                      dataType="wstr"
+                      length="128"
+                      name="Comment" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader.Paths[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader]"
+              endId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Target - AdventureWorks_Sales_SalesOrderHeader.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_Sales_SalesOrderHeader"
+              startId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader.Paths[Source - SalesOrderHeader_Output_Add ExtractDate]"
+              endId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Add ExtractDate.Inputs[Source - SalesOrderHeader_Output_Add ExtractDate]"
+              name="Source - SalesOrderHeader_Output_Add ExtractDate"
+              startId="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader\Source - SalesOrderHeader.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_Sales_SalesOrderHeader"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{E1211741-AE63-40AF-8E80-0A866CDBA6B4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_Sales_SalesOrderHeader"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1BE21F04-AAE2-4088-91D0-22FD89AA7FD0}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_Sales_SalesOrderHeader]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_Sales_SalesOrderHeader_To_Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader]"
+      DTS:CreationName=""
+      DTS:DTSID="{7C2AAAE4-58A3-4EE6-B67C-A0E803D8E8CF}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_Sales_SalesOrderHeader"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_Sales_SalesOrderHeader_To_Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader"
+      DTS:To="Package\Extract - SalesOrderHeader to AdventureWorks_Sales_SalesOrderHeader" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

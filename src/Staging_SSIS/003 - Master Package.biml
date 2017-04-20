@@ -1,0 +1,15 @@
+<#@ template language="C#" tier="3" #>
+<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Packages>
+        <Package Name="Staging - 0000 - Populate Staging Area" ConstraintMode="Parallel">
+            <Tasks>
+                <# foreach (var package in RootNode.Packages)
+                { #>
+                  <ExecutePackage Name="EPT - <#= package.Name #>">
+                      <ExternalProjectPackage Package="<#= package.Name #>.dtsx"></ExternalProjectPackage>
+                  </ExecutePackage>  
+                <# } #>
+            </Tasks>
+        </Package>
+    </Packages>
+</Biml>

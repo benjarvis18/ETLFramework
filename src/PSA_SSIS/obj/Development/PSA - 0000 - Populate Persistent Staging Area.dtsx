@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/3/2017 12:58:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{539B2736-2561-4D35-81CB-3C1C9D11099A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="PSA - 0000 - Populate Persistent Staging Area"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{ABEAE63F-A8A8-4BD4-8BC8-D55B2C2FF7A9}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package - PSA - 0001 - AdventureWorks_Sales_SalesOrderHeader"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{D4FAAADD-ED5C-4AB6-BDA9-73BF2943BD19}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package - PSA - 0001 - AdventureWorks_Sales_SalesOrderHeader"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>PSA - 0001 - AdventureWorks_Sales_SalesOrderHeader.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Package - PSA - 0002 - AdventureWorks_Sales_SalesOrderDetail"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{B246E409-5EB0-40FA-A6CB-659716595B1D}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Package - PSA - 0002 - AdventureWorks_Sales_SalesOrderDetail"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>PSA - 0002 - AdventureWorks_Sales_SalesOrderDetail.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

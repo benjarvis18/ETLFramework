@@ -1,0 +1,1123 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:45 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{1EA2A744-5891-43C4-A23A-6D7E05DD0EED}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0070 - AdventureWorks_Production_Product"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{47BB932D-49F2-40B1-B3F3-14A5C8A2F5F4}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C0F0B724-4A82-48F9-BAC9-54C71477E81B}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3FB33310-0B90-4BCE-935F-E9AE88D0C97E}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - Product to AdventureWorks_Production_Product"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{DF372928-D291-41AE-8C5C-E8732AFD5C5C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - Product to AdventureWorks_Production_Product"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Inputs[Source - Product_Output_Add ExtractDate]"
+                  name="Source - Product_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Inputs[Source - Product_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Inputs[Source - Product_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - Product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [Production].[Product]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductNumber]"
+                      length="25"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductNumber]"
+                      name="ProductNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[MakeFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[MakeFlag]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[MakeFlag]"
+                      name="MakeFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[FinishedGoodsFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[FinishedGoodsFlag]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[FinishedGoodsFlag]"
+                      name="FinishedGoodsFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SafetyStockLevel]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SafetyStockLevel]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SafetyStockLevel]"
+                      name="SafetyStockLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ReorderPoint]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ReorderPoint]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ReorderPoint]"
+                      name="ReorderPoint"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[StandardCost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[StandardCost]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[StandardCost]"
+                      name="StandardCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ListPrice]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Size]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Size]"
+                      length="5"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Size]"
+                      name="Size"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SizeUnitMeasureCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SizeUnitMeasureCode]"
+                      length="3"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SizeUnitMeasureCode]"
+                      name="SizeUnitMeasureCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[WeightUnitMeasureCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[WeightUnitMeasureCode]"
+                      length="3"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[WeightUnitMeasureCode]"
+                      name="WeightUnitMeasureCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Weight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Weight]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[DaysToManufacture]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[DaysToManufacture]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[DaysToManufacture]"
+                      name="DaysToManufacture"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductLine]"
+                      length="2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductLine]"
+                      name="ProductLine"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Class]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Class]"
+                      length="2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Class]"
+                      name="Class"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Style]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Style]"
+                      length="2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Style]"
+                      name="Style"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductSubcategoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductSubcategoryID]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductSubcategoryID]"
+                      name="ProductSubcategoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductModelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductModelID]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductModelID]"
+                      name="ProductModelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SellStartDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SellStartDate]"
+                      name="SellStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SellEndDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SellEndDate]"
+                      name="SellEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[DiscontinuedDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[DiscontinuedDate]"
+                      name="DiscontinuedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="ProductNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[MakeFlag]"
+                      dataType="bool"
+                      name="MakeFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[FinishedGoodsFlag]"
+                      dataType="bool"
+                      name="FinishedGoodsFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SafetyStockLevel]"
+                      dataType="i2"
+                      name="SafetyStockLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ReorderPoint]"
+                      dataType="i2"
+                      name="ReorderPoint" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SizeUnitMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="SizeUnitMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[WeightUnitMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="WeightUnitMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[DaysToManufacture]"
+                      dataType="i4"
+                      name="DaysToManufacture" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="2"
+                      name="ProductLine" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Class]"
+                      dataType="wstr"
+                      length="2"
+                      name="Class" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[Style]"
+                      dataType="wstr"
+                      length="2"
+                      name="Style" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductSubcategoryID]"
+                      dataType="i4"
+                      name="ProductSubcategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ProductModelID]"
+                      dataType="i4"
+                      name="ProductModelID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      name="DiscontinuedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductNumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductNumber]"
+                      name="ProductNumber" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[MakeFlag]"
+                      dataType="bool"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[MakeFlag]"
+                      name="MakeFlag" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[FinishedGoodsFlag]"
+                      dataType="bool"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[FinishedGoodsFlag]"
+                      name="FinishedGoodsFlag" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SafetyStockLevel]"
+                      dataType="i2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SafetyStockLevel]"
+                      name="SafetyStockLevel" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ReorderPoint]"
+                      dataType="i2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ReorderPoint]"
+                      name="ReorderPoint" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[StandardCost]"
+                      dataType="cy"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[StandardCost]"
+                      name="StandardCost" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SizeUnitMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SizeUnitMeasureCode]"
+                      name="SizeUnitMeasureCode" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[WeightUnitMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[WeightUnitMeasureCode]"
+                      name="WeightUnitMeasureCode" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Weight]"
+                      dataType="numeric"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[DaysToManufacture]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[DaysToManufacture]"
+                      name="DaysToManufacture" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductLine]"
+                      name="ProductLine" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Class]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Class]"
+                      name="Class" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Style]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[Style]"
+                      name="Style" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductSubcategoryID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductSubcategoryID]"
+                      name="ProductSubcategoryID" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductModelID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ProductModelID]"
+                      name="ProductModelID" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SellStartDate]"
+                      name="SellStartDate" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[SellEndDate]"
+                      name="SellEndDate" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[DiscontinuedDate]"
+                      name="DiscontinuedDate" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_Production_Product"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_Production_Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_Production_Product">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Name]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ProductNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="ProductNumber"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductNumber]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductNumber]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[MakeFlag]"
+                      cachedDataType="bool"
+                      cachedName="MakeFlag"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[MakeFlag]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[MakeFlag]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[FinishedGoodsFlag]"
+                      cachedDataType="bool"
+                      cachedName="FinishedGoodsFlag"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[FinishedGoodsFlag]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[FinishedGoodsFlag]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Color]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[SafetyStockLevel]"
+                      cachedDataType="i2"
+                      cachedName="SafetyStockLevel"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SafetyStockLevel]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SafetyStockLevel]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ReorderPoint]"
+                      cachedDataType="i2"
+                      cachedName="ReorderPoint"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ReorderPoint]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ReorderPoint]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[StandardCost]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[StandardCost]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ListPrice]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Size]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Size]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[SizeUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="SizeUnitMeasureCode"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SizeUnitMeasureCode]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SizeUnitMeasureCode]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[WeightUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="WeightUnitMeasureCode"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[WeightUnitMeasureCode]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[WeightUnitMeasureCode]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Weight]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Weight]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[DaysToManufacture]"
+                      cachedDataType="i4"
+                      cachedName="DaysToManufacture"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[DaysToManufacture]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[DaysToManufacture]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="ProductLine"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductLine]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductLine]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[Class]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="Class"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Class]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Class]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[Style]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="Style"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Style]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[Style]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ProductSubcategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductSubcategoryID"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductSubcategoryID]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductSubcategoryID]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ProductModelID]"
+                      cachedDataType="i4"
+                      cachedName="ProductModelID"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductModelID]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ProductModelID]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SellStartDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SellStartDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SellEndDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[SellEndDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[DiscontinuedDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[DiscontinuedDate]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[rowguid]"
+                      cachedDataType="guid"
+                      cachedName="rowguid"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[rowguid]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[rowguid]" />
+                    <inputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="ProductNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[MakeFlag]"
+                      dataType="bool"
+                      name="MakeFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[FinishedGoodsFlag]"
+                      dataType="bool"
+                      name="FinishedGoodsFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SafetyStockLevel]"
+                      dataType="i2"
+                      name="SafetyStockLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ReorderPoint]"
+                      dataType="i2"
+                      name="ReorderPoint" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SizeUnitMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="SizeUnitMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[WeightUnitMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="WeightUnitMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[DaysToManufacture]"
+                      dataType="i4"
+                      name="DaysToManufacture" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="2"
+                      name="ProductLine" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Class]"
+                      dataType="wstr"
+                      length="2"
+                      name="Class" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[Style]"
+                      dataType="wstr"
+                      length="2"
+                      name="Style" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductSubcategoryID]"
+                      dataType="i4"
+                      name="ProductSubcategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ProductModelID]"
+                      dataType="i4"
+                      name="ProductModelID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      name="DiscontinuedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - Product to AdventureWorks_Production_Product.Paths[Add ExtractDate_Output_Target - AdventureWorks_Production_Product]"
+              endId="Package\Extract - Product to AdventureWorks_Production_Product\Target - AdventureWorks_Production_Product.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_Product]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_Production_Product"
+              startId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - Product to AdventureWorks_Production_Product.Paths[Source - Product_Output_Add ExtractDate]"
+              endId="Package\Extract - Product to AdventureWorks_Production_Product\Add ExtractDate.Inputs[Source - Product_Output_Add ExtractDate]"
+              name="Source - Product_Output_Add ExtractDate"
+              startId="Package\Extract - Product to AdventureWorks_Production_Product\Source - Product.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_Production_Product"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{5D5A4FCD-BC31-421E-BBBC-AE78B69C1729}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_Production_Product"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3FB33310-0B90-4BCE-935F-E9AE88D0C97E}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_Production_Product]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_Production_Product_To_Extract - Product to AdventureWorks_Production_Product]"
+      DTS:CreationName=""
+      DTS:DTSID="{B800D4ED-0C1A-4364-9D77-02AA2C8EA97F}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_Production_Product"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_Production_Product_To_Extract - Product to AdventureWorks_Production_Product"
+      DTS:To="Package\Extract - Product to AdventureWorks_Production_Product" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

@@ -1,0 +1,52 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [stg] (Schema)
+       [stg].[AdventureWorks_Person_ContactType] (Table)
+       [stg].[AdventureWorks_Sales_CountryRegionCurrency] (Table)
+       [stg].[AdventureWorks_Person_CountryRegion] (Table)
+       [stg].[AdventureWorks_Production_WorkOrder] (Table)
+       [stg].[AdventureWorks_Purchasing_PurchaseOrderDetail] (Table)
+       [stg].[AdventureWorks_Sales_CreditCard] (Table)
+       [stg].[AdventureWorks_Production_Culture] (Table)
+       [stg].[AdventureWorks_Production_WorkOrderRouting] (Table)
+       [stg].[AdventureWorks_Sales_Currency] (Table)
+       [stg].[AdventureWorks_Purchasing_PurchaseOrderHeader] (Table)
+       [stg].[AdventureWorks_Sales_CurrencyRate] (Table)
+       [stg].[AdventureWorks_Sales_Customer] (Table)
+       [stg].[AdventureWorks_HumanResources_Department] (Table)
+       [stg].[AdventureWorks_Production_Document] (Table)
+       [stg].[AdventureWorks_Sales_SalesOrderDetail] (Table)
+       [stg].[AdventureWorks_Person_EmailAddress] (Table)
+       [stg].[AdventureWorks_HumanResources_Employee] (Table)
+       [stg].[AdventureWorks_Sales_SalesOrderHeader] (Table)
+       [stg].[AdventureWorks_HumanResources_EmployeeDepartmentHistory] (Table)
+       [stg].[AdventureWorks_HumanResources_EmployeePayHistory] (Table)
+       [stg].[AdventureWorks_Sales_SalesOrderHeaderSalesReason] (Table)
+       [stg].[AdventureWorks_Sales_SalesPerson] (Table)
+       [stg].[AdventureWorks_Production_Illustration] (Table)
+       [stg].[AdventureWorks_HumanResources_JobCandidate] (Table)
+       [stg].[AdventureWorks_Production_Location] (Table)
+       [stg].[AdventureWorks_Person_Password] (Table)
+       [stg].[AdventureWorks_Sales_SalesPersonQuotaHistory] (Table)
+       [stg].[AdventureWorks_Person_Person] (Table)
+       [stg].[AdventureWorks_Sales_SalesReason] (Table)
+       [stg].[AdventureWorks_Sales_SalesTaxRate] (Table)
+       [stg].[AdventureWorks_Sales_PersonCreditCard] (Table)
+       [stg].[AdventureWorks_Person_PersonPhone] (Table)
+       [stg].[AdventureWorks_Sales_SalesTerritory] (Table)
+       [stg].[AdventureWorks_Person_PhoneNumberType] (Table)
+       [stg].[AdventureWorks_Production_Product] (Table)
+       [stg].[AdventureWorks_Sales_SalesTerritoryHistory] (Table)
+       [stg].[IsPSA] (View)
+
+** Supporting actions

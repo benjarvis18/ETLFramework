@@ -1,0 +1,546 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{ADA840D9-BDB2-4D99-A127-5FE7D0E2211E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0024 - AdventureWorks_Production_ProductPhoto"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{338DB72F-48F5-40F4-8830-D5E4045AA49D}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{36C4EDF4-7654-4FE7-BD54-3B5103EE7D88}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{06F231D9-703A-45BD-A415-B94C878A74B3}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{CD96C55F-6114-4B6A-93F0-054562E970E3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Inputs[Source - ProductPhoto_Output_Add ExtractDate]"
+                  name="Source - ProductPhoto_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Inputs[Source - ProductPhoto_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Inputs[Source - ProductPhoto_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - ProductPhoto"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [Production].[ProductPhoto]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ProductPhotoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ProductPhotoID]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ProductPhotoID]"
+                      name="ProductPhotoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ThumbNailPhoto]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ThumbNailPhoto]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ThumbNailPhoto]"
+                      name="ThumbNailPhoto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ThumbnailPhotoFileName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ThumbnailPhotoFileName]"
+                      length="50"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ThumbnailPhotoFileName]"
+                      name="ThumbnailPhotoFileName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[LargePhoto]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[LargePhoto]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[LargePhoto]"
+                      name="LargePhoto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[LargePhotoFileName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[LargePhotoFileName]"
+                      length="50"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[LargePhotoFileName]"
+                      name="LargePhotoFileName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ProductPhotoID]"
+                      dataType="i4"
+                      name="ProductPhotoID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ThumbNailPhoto]"
+                      dataType="image"
+                      name="ThumbNailPhoto" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ThumbnailPhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ThumbnailPhotoFileName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[LargePhoto]"
+                      dataType="image"
+                      name="LargePhoto" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[LargePhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LargePhotoFileName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ProductPhotoID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ProductPhotoID]"
+                      name="ProductPhotoID" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ThumbNailPhoto]"
+                      dataType="image"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ThumbNailPhoto]"
+                      name="ThumbNailPhoto" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ThumbnailPhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ThumbnailPhotoFileName]"
+                      name="ThumbnailPhotoFileName" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[LargePhoto]"
+                      dataType="image"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[LargePhoto]"
+                      name="LargePhoto" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[LargePhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[LargePhotoFileName]"
+                      name="LargePhotoFileName" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_Production_ProductPhoto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_Production_ProductPhoto]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].Columns[ProductPhotoID]"
+                      cachedDataType="i4"
+                      cachedName="ProductPhotoID"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ProductPhotoID]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ProductPhotoID]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].Columns[ThumbNailPhoto]"
+                      cachedDataType="image"
+                      cachedName="ThumbNailPhoto"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ThumbNailPhoto]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ThumbNailPhoto]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].Columns[ThumbnailPhotoFileName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ThumbnailPhotoFileName"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ThumbnailPhotoFileName]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ThumbnailPhotoFileName]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].Columns[LargePhoto]"
+                      cachedDataType="image"
+                      cachedName="LargePhoto"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[LargePhoto]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[LargePhoto]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].Columns[LargePhotoFileName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LargePhotoFileName"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[LargePhotoFileName]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[LargePhotoFileName]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ProductPhotoID]"
+                      dataType="i4"
+                      name="ProductPhotoID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ThumbNailPhoto]"
+                      dataType="image"
+                      name="ThumbNailPhoto" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ThumbnailPhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ThumbnailPhotoFileName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[LargePhoto]"
+                      dataType="image"
+                      name="LargePhoto" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[LargePhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LargePhotoFileName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto.Paths[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto]"
+              endId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Target - AdventureWorks_Production_ProductPhoto.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_Production_ProductPhoto"
+              startId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto.Paths[Source - ProductPhoto_Output_Add ExtractDate]"
+              endId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Add ExtractDate.Inputs[Source - ProductPhoto_Output_Add ExtractDate]"
+              name="Source - ProductPhoto_Output_Add ExtractDate"
+              startId="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto\Source - ProductPhoto.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_Production_ProductPhoto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{505F770D-FAD6-4C26-BE94-EAC5742D88A6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_Production_ProductPhoto"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{06F231D9-703A-45BD-A415-B94C878A74B3}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_Production_ProductPhoto]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_Production_ProductPhoto_To_Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto]"
+      DTS:CreationName=""
+      DTS:DTSID="{AD606E90-A7D3-473D-8AA5-D7E304E351C8}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_Production_ProductPhoto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_Production_ProductPhoto_To_Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto"
+      DTS:To="Package\Extract - ProductPhoto to AdventureWorks_Production_ProductPhoto" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

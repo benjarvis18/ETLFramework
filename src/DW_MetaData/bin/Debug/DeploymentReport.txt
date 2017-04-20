@@ -1,0 +1,20 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [Staging] (Schema)
+       [Staging].[Extractions] (Table)
+       [Staging].[Connections] (Table)
+       [Staging].[FK_Staging_Connections_SourceConnectionId_Staging_Extractions] (Foreign Key)
+       [Staging].[FK_Staging_Connections_TargetConnectionId_Staging_Extractions] (Foreign Key)
+       [Staging].[GetConnections] (Procedure)
+
+** Supporting actions

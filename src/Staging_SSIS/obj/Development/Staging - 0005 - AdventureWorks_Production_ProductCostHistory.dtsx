@@ -1,0 +1,508 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 3:59:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LWLT009"
+  DTS:CreatorName="bjarvis"
+  DTS:DTSID="{30CE2440-5805-4BC1-B621-738F8F928A1A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Staging - 0005 - AdventureWorks_Production_ProductCostHistory"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{CC04316C-8105-4889-B1F5-4F8B576F6E81}"
+  DTS:VersionMajor="0">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source_AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5CD70E17-9C86-43FA-BD43-4361C2DB05DA}"
+      DTS:ObjectName="Source_AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=AdventureWorks;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Target_StagingDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D6D9E4C0-6AEB-4FC5-B0A8-72748BF202FC}"
+      DTS:ObjectName="Target_StagingDatabase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="data source=(local);initial catalog=DW_Staging;provider=SQLNCLI11;persist security info=true;integrated security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{A670DC22-611E-4508-9824-1B3DE4DA224D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              name="Add ExtractDate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Inputs[Source - ProductCostHistory_Output_Add ExtractDate]"
+                  name="Source - ProductCostHistory_Output_Add ExtractDate">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Output]"
+                  exclusionGroup="1"
+                  name="Output"
+                  synchronousInputId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Inputs[Source - ProductCostHistory_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Output].Columns[ExtractDate]"
+                      name="ExtractDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Inputs[Source - ProductCostHistory_Output_Add ExtractDate]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              name="Source - ProductCostHistory"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">
+                                                                            SELECT * FROM [Production].[ProductCostHistory]
+                                                                    </property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source_AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source_AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output]"
+                  name="Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[StartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[StartDate]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[StartDate]"
+                      name="StartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[EndDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[EndDate]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[EndDate]"
+                      name="EndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[StandardCost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[StandardCost]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[StandardCost]"
+                      name="StandardCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error]"
+                  isErrorOut="true"
+                  name="Error">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[StartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[StartDate]"
+                      name="StartDate" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[EndDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[EndDate]"
+                      name="EndDate" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[StandardCost]"
+                      dataType="cy"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[StandardCost]"
+                      name="StandardCost" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              name="Target - AdventureWorks_Production_ProductCostHistory"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[AdventureWorks_Production_ProductCostHistory]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Target_StagingDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[Target_StagingDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].Columns[ExtractDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ExtractDate"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[ExtractDate]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Output].Columns[ExtractDate]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].Columns[StartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[StartDate]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[StartDate]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].Columns[EndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EndDate"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[EndDate]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[EndDate]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[StandardCost]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[StandardCost]" />
+                    <inputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output].Columns[ModifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory].ExternalColumns[ExtractDate]"
+                      dataType="dbTimeStamp2"
+                      name="ExtractDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Outputs[Error]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error"
+                  synchronousInputId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Outputs[Error].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Outputs[Error].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Outputs[Error].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Outputs[Error].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory.Paths[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory]"
+              endId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Target - AdventureWorks_Production_ProductCostHistory.Inputs[Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory]"
+              name="Add ExtractDate_Output_Target - AdventureWorks_Production_ProductCostHistory"
+              startId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Outputs[Output]" />
+            <path
+              refId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory.Paths[Source - ProductCostHistory_Output_Add ExtractDate]"
+              endId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Add ExtractDate.Inputs[Source - ProductCostHistory_Output_Add ExtractDate]"
+              name="Source - ProductCostHistory_Output_Add ExtractDate"
+              startId="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory\Source - ProductCostHistory.Outputs[Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate AdventureWorks_Production_ProductCostHistory"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{24B354CB-8FD4-4CED-8CE8-4BC442BEC6E1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate AdventureWorks_Production_ProductCostHistory"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D6D9E4C0-6AEB-4FC5-B0A8-72748BF202FC}"
+          SQLTask:SqlStatementSource="&#xA;                            TRUNCATE TABLE [stg].[AdventureWorks_Production_ProductCostHistory]&#xA;                        " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint_SQL - Truncate AdventureWorks_Production_ProductCostHistory_To_Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory]"
+      DTS:CreationName=""
+      DTS:DTSID="{83A1899C-8E52-4D5F-A81E-F1ECB073E43B}"
+      DTS:From="Package\SQL - Truncate AdventureWorks_Production_ProductCostHistory"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint_SQL - Truncate AdventureWorks_Production_ProductCostHistory_To_Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory"
+      DTS:To="Package\Extract - ProductCostHistory to AdventureWorks_Production_ProductCostHistory" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>
